@@ -10,6 +10,7 @@ Predictions:
 - What patterns might exist around time of day? The evening will have more hours since I normally do homework or watch TV during that time.
 */
 
+//Input
 const myWeek = [
   {
     day: "Monday",
@@ -68,4 +69,52 @@ const myWeek = [
     timeOfDay: "evening"
   }
 ];
+
+//Functions
+
+// Total hours by category
+function totalHoursByCategory(categoryName) {
+  return myWeek
+    .filter(act => act.category === categoryName)
+    .reduce((total, act) => total + act.hoursSpent, 0);
+}
+
+// Average enjoyment by time of day
+function averageEnjoymentByTimeOfDay(time) {
+  const matches = myWeek.filter(act => act.timeOfDay === time);
+
+  if (matches.length === 0) return 0;
+
+  const totalEnjoyment = matches.reduce((sum, act) => sum + act.enjoyment, 0);
+  return totalEnjoyment / matches.length;
+}
+
+// Most common category
+function mostCommonCategory() {
+  const counts = myWeek.reduce((acc, act) => {
+    acc[act.category] = (acc[act.category] || 0) + 1;
+    return acc;
+  }, {});
+
+  const winner = Object.entries(counts).reduce((best, current) => {
+    const [bestCat, bestCount] = best;
+    const [curCat, curCount] = current;
+    return curCount > bestCount ? current : best;
+  });
+
+  return winner[0];
+}
+
+// Low-effort, high-enjoyment activities
+function lowEffortHighEnjoyment(maxHours, minEnjoyment) {
+  return myWeek
+    .filter(act => act.hoursSpent <= maxHours && act.enjoyment >= minEnjoyment)
+    .map(act => act.activity);
+}
+
+//Higher-Order Function
+function filterByCondition(testFunction) {
+  return myWeek.filter(testFunction);
+}
+
 
