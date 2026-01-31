@@ -3,6 +3,13 @@ Beatriz Galarza
 Repository: https://github.com/beaglrz/cs81-module5b-weektracker
 */
 
+/*
+Predictions:
+- Which activity will have the highest enjoyment? Gym workout
+- What category will dominate your week? Creative
+- What patterns might exist around time of day? The evening will have more hours since I normally do homework or watch TV during that time.
+*/
+
 const myWeek = [
   {
     day: "Monday",
@@ -61,3 +68,4 @@ const myWeek = [
     timeOfDay: "evening"
   }
 ];
+
