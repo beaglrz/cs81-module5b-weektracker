@@ -14,59 +14,59 @@ Predictions:
 const myWeek = [
   {
     day: "Monday",
-    activity: "In-person class on campus",
-    category: "creative",
+    activity: "In-person Class on Campus",
+    category: "Creative",
     hoursSpent: 2,
     enjoyment: 8,
-    timeOfDay: "afternoon"
+    timeOfDay: "Afternoon"
   },
   {
     day: "Tuesday",
-    activity: "Database homework",
-    category: "creative",
+    activity: "Public Speaking Homework",
+    category: "Creative",
     hoursSpent: 2,
     enjoyment: 7,
-    timeOfDay: "evening"
+    timeOfDay: "Evening"
   },
   {
     day: "Wednesday",
-    activity: "Presented a speech in class",
-    category: "social",
+    activity: "Presented a Speech in Class",
+    category: "Social",
     hoursSpent: 2,
     enjoyment: 6,
-    timeOfDay: "morning"
+    timeOfDay: "Morning"
   },
   {
     day: "Thursday",
-    activity: "Cook dinner",
-    category: "creative",
+    activity: "Cook Dinner",
+    category: "Creative",
     hoursSpent: 1.0,
     enjoyment: 9,
-    timeOfDay: "evening"
+    timeOfDay: "Evening"
   },
   {
     day: "Friday",
-    activity: "Completed JavaScript assignments",
-    category: "creative",
+    activity: "Completed JavaScript Assignments",
+    category: "Creative",
     hoursSpent: 5,
     enjoyment: 7,
-    timeOfDay: "evening"
+    timeOfDay: "Evening"
   },
   {
     day: "Saturday",
-    activity: "Gym workout",
-    category: "physical",
+    activity: "Gym Workout",
+    category: "Physical",
     hoursSpent: 1,
     enjoyment: 9,
-    timeOfDay: "morning"
+    timeOfDay: "Morning"
   },
   {
     day: "Sunday",
-    activity: "Caught up on my TV shows",
-    category: "creative",
+    activity: "Caught Up on TV Shows",
+    category: "Creative",
     hoursSpent: 3,
     enjoyment: 9,
-    timeOfDay: "evening"
+    timeOfDay: "Evening"
   }
 ];
 
@@ -117,4 +117,21 @@ function filterByCondition(testFunction) {
   return myWeek.filter(testFunction);
 }
 
+//Output
 
+console.log("WEEKLY ACTIVITIES");
+
+console.log("Total Hours Spent on Physical Activities:",
+    totalHoursByCategory("Physical"));
+
+console.log("Average Enjoyment for Activities in the Evening:", 
+    averageEnjoymentByTimeOfDay("Evening").toFixed(1));
+
+console.log("Most Common Activity Type:", 
+    mostCommonCategory());
+
+console.log("Low-Effort, High-Enjoyment Activities:", 
+    lowEffortHighEnjoyment(1,9).join(", "));
+
+console.log("Evening Activities with 8+ Enjoyment:", 
+    filterByCondition(activity => activity.timeOfDay === "Evening" && activity.enjoyment >= 8).map(activity => activity.activity).join(", "));
